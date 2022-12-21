@@ -12,14 +12,29 @@ import calories from '../../assets/calories.png';
 // Components
 import Header from '../Header/Header';
 
+// Libraries
+import { motion } from 'framer-motion';
+import NumberCounter from 'number-counter';
+
 const Hero = () => {
+  const transition = { type: 'spring', duration: 1.5 };
+  const mobile = window.innerWidth <= 768 ? true : false;
+
   return (
-    <div className='hero'>
+    <div
+      className='hero'
+      id='hero'
+    >
+      <div className='blur hero-blur'></div>
       <div className='left-h'>
         <Header />
         {/* Ad */}
         <div className='the-best-ad'>
-          <div></div>
+          <motion.div
+            initial={{ left: mobile ? '170px' : '238px' }}
+            whileInView={{ left: '8px' }}
+            transition={{ ...transition, type: 'tween' }}
+          ></motion.div>
           <span>Le meilleur fitness club de la ville</span>
         </div>
 
@@ -40,15 +55,36 @@ const Hero = () => {
         {/* Figures */}
         <div className='figures'>
           <div>
-            <span>+ 140</span>
+            <span>
+              <NumberCounter
+                end={167}
+                start={100}
+                delay='3'
+                postFix='+'
+              />
+            </span>
             <span>Coachs diplômés</span>
           </div>
           <div>
-            <span>+ 1247</span>
+            <span>
+              <NumberCounter
+                end={1243}
+                start={920}
+                delay='4'
+                postFix='+'
+              />
+            </span>
             <span>Membres</span>
           </div>
           <div>
-            <span>+ 50</span>
+            <span>
+              <NumberCounter
+                end={50}
+                start={18}
+                delay='2'
+                postFix='+'
+              />
+            </span>
             <span>Programmes d'entraînements</span>
           </div>
         </div>
@@ -62,14 +98,19 @@ const Hero = () => {
       <div className='right-h'>
         <button className='btn'>Nous rejoindre</button>
 
-        <div className='heart-rate'>
+        <motion.div
+          initial={{ right: '-1rem' }}
+          whileInView={{ right: '4rem' }}
+          transition={transition}
+          className='heart-rate'
+        >
           <img
             src={heart}
             alt='heart'
           />
           <span>Rythme Cardiaque</span>
           <span>116 bpm</span>
-        </div>
+        </motion.div>
 
         {/* Hero Images */}
         <img
@@ -77,14 +118,22 @@ const Hero = () => {
           alt='hero_image'
           className='hero-image'
         />
-        <img
+        <motion.img
+          initial={{ right: '11rem' }}
+          whileInView={{ right: '20rem' }}
+          transition={transition}
           src={hero_img_back}
           alt='hero_image_back'
           className='hero-image-back'
         />
 
         {/* Calories */}
-        <div className='calories'>
+        <motion.div
+          initial={{ right: '37rem' }}
+          whileInView={{ right: '28rem' }}
+          transition={transition}
+          className='calories'
+        >
           <img
             src={calories}
             alt='calories'
@@ -93,7 +142,7 @@ const Hero = () => {
             <span>Calories brûlées</span>
             <span>220 kcal</span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

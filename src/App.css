@@ -53,3 +53,22 @@
   text-transform: uppercase;
   font-style: italic;
 }
+
+.blur {
+  background: rgba(253, 120, 43, 0.69);
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(9.375rem);
+  z-index: -9;
+}
+
+@media screen and (max-width: 768px) {
+  .section-header {
+    flex-direction: column;
+    gap: 1rem;
+    font-size: x-large;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+}

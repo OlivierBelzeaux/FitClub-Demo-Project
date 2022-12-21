@@ -50,3 +50,9 @@
   background: var(--planCard);
   cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+  .program-categories {
+    flex-direction: column;
+  }
+}
